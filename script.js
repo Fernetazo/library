@@ -30,9 +30,14 @@ function addNewBook() {
     let div = document.createElement("div");
     div.classList.add("bookCard");
     div.textContent = Object.values(library[library.length - 1]);
+    div.dataset.index = library.length - 1;
     libraryDiv.appendChild(div);
 
-    // TO DO: Add X button
+    let button = document.createElement("button");
+    button.classList.add("deleteButton");
+    button.textContent = "❌";
+    button.addEventListener('click', deleteBook);
+    div.appendChild(button);
 }
 
 function showLibrary() {
@@ -58,7 +63,6 @@ function deleteBook(e) {
     toDelete.remove();
     let index = toDelete.dataset.index;
     library.splice(index, 1);
-    console.table(library);
     if (div) {
         for (let i = index; i <= library.length; i++) {
             if (div) {
