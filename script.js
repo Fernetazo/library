@@ -37,11 +37,18 @@ function showLibrary() {
         let div = document.createElement("div");
         div.classList.add("bookCard");
         div.textContent = Object.values(library[i]);
-            let button = document.createElement("button");
-            button.classList.add("deleteButton");
-            div.appendChild(button);
         libraryDiv.appendChild(div);
+
+        let button = document.createElement("button");
+        button.classList.add("deleteButton");
+        button.textContent = "❌";
+        button.dataset.index = i;
+        div.appendChild(button);
     }
+}
+
+function deleteBook() {
+    
 }
 
 showLibrary();
