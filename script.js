@@ -1,15 +1,49 @@
+let library = [
+    {title: "Harry Potter", author:"J. K. Rowling", pages:"500", read:"yes"},
+    {title: "The Doom", author:"Jankiu", pages:"222", read:"yes"}
+];
+
 function Book(title, author, pages, read) {
     this.title = title;
     this.author = author;
     this.pages = pages;
     this.read = read;
-    this.info = function() {
-        return (`${title}, by ${author}, ${pages} pages, ${(read) ? 'read it' : 'not read yet'}.`);
+}
+
+function popupNewBook() {
+    const newBookPopup = document.getElementById("newBookPopup");
+    newBookPopup.style.visibility = "visible";
+}
+
+function addNewBook() {
+
+    let title = document.getElementById("title").value;
+    let author = document.getElementById("author").value;
+    let pages = document.getElementById("pages").value;
+    let read = document.getElementById("read").value;
+    
+    const newBook = new Book(title, author, pages, read);
+    library.push(newBook);
+
+    let div = document.createElement("div");
+    div.classList.add("bookCard");
+    div.textContent = Object.values(library[library.length - 1]);
+    libraryDiv.appendChild(div);
+}
+
+function showLibrary() {
+    let libraryDiv = document.getElementById("libraryDiv");
+    for (let i = 0; i < library.length; i++) {
+        let div = document.createElement("div");
+        div.classList.add("bookCard");
+        div.textContent = Object.values(library[i]);
+            let button = document.createElement("button");
+            button.classList.add("deleteButton");
+            div.appendChild(button);
+        libraryDiv.appendChild(div);
     }
 }
 
-const theHobbit = new Book('The Hobbit', 'J.R.R. Tolkien', '295', false);
-const BigBrother1984 = new Book('1984', 'Orson Wells', '500', true);
-
-console.log(theHobbit.info());
-console.log(BigBrother1984.info());
+showLibrary();
+const newBookButton = document.getElementById("newBookButton");
+newBookButton.addEventListener('click', popupNewBook);
