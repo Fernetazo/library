@@ -1,9 +1,4 @@
-let library = [
-    {title: "Harry Potter", author:"J. K. Rowling", pages:"500", read:false},
-    {title: "The Doom", author:"Jankiu", pages:"222", read:false},
-    {title: "Fandango", author:"Bajogondo", pages:"333", read:true},
-    {title: "Zarasa", author:"Sara", pages:"444", read:true}
-];
+let library = [];
 
 function Book(title, author, pages, read) {
     this.title = title;
@@ -26,6 +21,8 @@ function addNewBook() {
     
     const newBook = new Book(title, author, pages, read.checked);
     library.push(newBook);
+
+    window.localStorage.setItem('library', JSON.stringify(library));
 
     let div = document.createElement("div");
 
@@ -58,6 +55,9 @@ function addNewBook() {
 
 function showLibrary() {
     let libraryDiv = document.getElementById("libraryDiv");
+    
+    library = JSON.parse(window.localStorage.getItem('library'));
+
     for (let i = 0; i < library.length; i++) {
 
         let div = document.createElement("div");
@@ -84,6 +84,10 @@ function showLibrary() {
         readSlider.classList.add("slider");
         readSwitchLabel.appendChild(readSlider);
         div.appendChild(readSwitchLabel);
+        
+        if (library[i]["read"] == true) {
+            readCheckbox.checked = true;
+        }
     }
 }
 
@@ -93,6 +97,9 @@ function deleteBook(e) {
     toDelete.remove();
     let index = toDelete.dataset.index;
     library.splice(index, 1);
+    
+    window.localStorage.setItem('library', JSON.stringify(library));
+    
     if (div) {
         for (let i = index; i <= library.length; i++) {
             if (div) {
@@ -111,6 +118,7 @@ function toggleRead(e) {
     } else {
         library[index]["read"] = true;
     }
+    window.localStorage.setItem('library', JSON.stringify(library));
 }
 
 showLibrary();
