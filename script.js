@@ -54,6 +54,18 @@ function showLibrary() {
         button.textContent = "❌";
         button.addEventListener('click', deleteBook);
         div.appendChild(button);
+
+        // Read switch
+        let readSwitchLabel = document.createElement("label");
+        readSwitchLabel.classList.add("switch");
+        let readCheckbox = document.createElement("input");
+        readCheckbox.type = "checkbox"
+        readCheckbox.addEventListener('click', toggleRead);
+        readSwitchLabel.appendChild(readCheckbox);
+        let readSlider = document.createElement("span");
+        readSlider.classList.add("slider");
+        readSwitchLabel.appendChild(readSlider);
+        div.appendChild(readSwitchLabel);
     }
 }
 
@@ -71,6 +83,10 @@ function deleteBook(e) {
             }
         }
     }
+}
+
+function toggleRead(e) {
+
 }
 
 showLibrary();
