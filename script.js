@@ -104,7 +104,13 @@ function deleteBook(e) {
 }
 
 function toggleRead(e) {
-
+    let toToggle = e.target.parentElement.parentElement;
+    let index = toToggle.dataset.index;
+    if (library[index]["read"]) {
+        library[index]["read"] = false;
+    } else {
+        library[index]["read"] = true;
+    }
 }
 
 showLibrary();
