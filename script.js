@@ -1,8 +1,8 @@
 let library = [
-    {title: "Harry Potter", author:"J. K. Rowling", pages:"500", read:"yes"},
-    {title: "The Doom", author:"Jankiu", pages:"222", read:"yes"},
-    {title: "Fandango", author:"Bajogondo", pages:"333", read:"yes"},
-    {title: "Zarasa", author:"Sara", pages:"444", read:"yes"}
+    {title: "Harry Potter", author:"J. K. Rowling", pages:"500", read:false},
+    {title: "The Doom", author:"Jankiu", pages:"222", read:false},
+    {title: "Fandango", author:"Bajogondo", pages:"333", read:true},
+    {title: "Zarasa", author:"Sara", pages:"444", read:true}
 ];
 
 function Book(title, author, pages, read) {
@@ -22,9 +22,9 @@ function addNewBook() {
     let title = document.getElementById("title").value;
     let author = document.getElementById("author").value;
     let pages = document.getElementById("pages").value;
-    let read = document.getElementById("read").value;
+    let read = document.getElementById("read");
     
-    const newBook = new Book(title, author, pages, read);
+    const newBook = new Book(title, author, pages, read.checked);
     library.push(newBook);
 
     let div = document.createElement("div");
