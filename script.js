@@ -24,70 +24,16 @@ function addNewBook() {
 
     window.localStorage.setItem('library', JSON.stringify(library));
 
-    let div = document.createElement("div");
-
-    div.classList.add("bookCard");
-    div.textContent = Object.values(library[library.length - 1]);
-    div.dataset.index = library.length - 1;
-    libraryDiv.appendChild(div);
-
-    let button = document.createElement("button");
-    button.classList.add("deleteButton");
-    button.textContent = "❌";
-    button.addEventListener('click', deleteBook);
-    div.appendChild(button);
-
-    let readSwitchLabel = document.createElement("label");
-    readSwitchLabel.classList.add("switch");
-    let readCheckbox = document.createElement("input");
-    readCheckbox.type = "checkbox"
-    readCheckbox.addEventListener('click', toggleRead);
-    readSwitchLabel.appendChild(readCheckbox);
-    let readSlider = document.createElement("span");
-    readSlider.classList.add("slider");
-    readSwitchLabel.appendChild(readSlider);
-    div.appendChild(readSwitchLabel);
-
-    if (read.checked) {
-        readCheckbox.checked = true;
-    }
+    makeVisualCard(library, action = "addNewBook");
 }
 
 function showLibrary() {
-    let libraryDiv = document.getElementById("libraryDiv");
     
     library = JSON.parse(window.localStorage.getItem('library'));
 
     for (let i = 0; i < library.length; i++) {
 
-        let div = document.createElement("div");
-
-        div.classList.add("bookCard");
-        div.textContent = Object.values(library[i]);
-        div.dataset.index = i;
-        libraryDiv.appendChild(div);
-
-        let button = document.createElement("button");
-        button.classList.add("deleteButton");
-        button.textContent = "❌";
-        button.addEventListener('click', deleteBook);
-        div.appendChild(button);
-
-        // Read switch
-        let readSwitchLabel = document.createElement("label");
-        readSwitchLabel.classList.add("switch");
-        let readCheckbox = document.createElement("input");
-        readCheckbox.type = "checkbox"
-        readCheckbox.addEventListener('click', toggleRead);
-        readSwitchLabel.appendChild(readCheckbox);
-        let readSlider = document.createElement("span");
-        readSlider.classList.add("slider");
-        readSwitchLabel.appendChild(readSlider);
-        div.appendChild(readSwitchLabel);
-        
-        if (library[i]["read"] == true) {
-            readCheckbox.checked = true;
-        }
+        makeVisualCard(library, action = "showLibrary", i);
     }
 }
 
@@ -119,6 +65,50 @@ function toggleRead(e) {
         library[index]["read"] = true;
     }
     window.localStorage.setItem('library', JSON.stringify(library));
+}
+
+function makeVisualCard(library, action, i) {
+    let libraryDiv = document.getElementById("libraryDiv");
+    
+    let div = document.createElement("div");
+    div.classList.add("bookCard");
+
+    if (action == "showLibrary") {
+        div.textContent = Object.values(library[i]);
+        div.dataset.index = i;
+    } else {
+        div.textContent = Object.values(library[library.length - 1]);
+        div.dataset.index = library.length - 1;
+    }
+    libraryDiv.appendChild(div);
+
+    let button = document.createElement("button");
+    button.classList.add("deleteButton");
+    button.textContent = "❌";
+    button.addEventListener('click', deleteBook);
+    div.appendChild(button);
+
+    // Read switch
+    let readSwitchLabel = document.createElement("label");
+    readSwitchLabel.classList.add("switch");
+    let readCheckbox = document.createElement("input");
+    readCheckbox.type = "checkbox"
+    readCheckbox.addEventListener('click', toggleRead);
+    readSwitchLabel.appendChild(readCheckbox);
+    let readSlider = document.createElement("span");
+    readSlider.classList.add("slider");
+    readSwitchLabel.appendChild(readSlider);
+    div.appendChild(readSwitchLabel);
+    
+    if (action == "addNewBook") {
+        if (read.checked) {
+            readCheckbox.checked = true;
+        }
+    } else {
+        if (library[i]["read"] == true) {
+            readCheckbox.checked = true;
+        }
+    }
 }
 
 showLibrary();
