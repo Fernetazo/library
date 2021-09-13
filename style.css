@@ -5,6 +5,10 @@ body {
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    font-family: "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    background: rgb(75,179,154);
+    background: linear-gradient(180deg, rgba(75,179,154,1) 0%, rgba(54,132,107,1) 100%); 
+    background-attachment: fixed;
 }
 
 main {
@@ -21,7 +25,7 @@ main {
     right: 0;
     bottom: 0;
     background-color: rgba(0,0,0,0.4); 
-    border: red 1px solid;
+    border:#4bb39a 1px solid;
     visibility: hidden;
     transition: all 0.5s;
 }
@@ -29,12 +33,12 @@ main {
 #newBookForm {
     display: flex;
     flex-direction: column;
-    background-color: #fefefe;
+    background-color: #36846b;
     margin: 15% auto; /* 15% from the top and centered */
     padding: 20px;
     border: 1px solid #888;
-    width: 30%; 
-    gap: 10px;
+    width: 20%; 
+    gap: 5px;
 }
 
 .close {
@@ -55,12 +59,16 @@ main {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
+    gap: 15px;
 }
 
 .bookCard {
     width: 150px;
     height: 200px;
     border: 1px solid black;
+    background: rgb(241,178,75);
+    background: linear-gradient(180deg, rgba(241,178,75,1) 0%, rgba(214,132,56,1) 100%); 
+    
 }
 
 .deleteButton {
@@ -124,9 +132,7 @@ input:checked + .slider:before {
 
 
 footer {
-    font-family: "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
     color: whitesmoke;
-    padding-top: 20px;
 }
 
 h5 {
