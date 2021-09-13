@@ -1,3 +1,5 @@
+// TO DO: Modal
+
 let library = [];
 
 function Book(title, author, pages, read) {
@@ -17,9 +19,9 @@ function addNewBook() {
     let title = document.getElementById("title").value;
     let author = document.getElementById("author").value;
     let pages = document.getElementById("pages").value;
-    let read = document.getElementById("read");
+    let read = document.getElementById("read").checked;
     
-    const newBook = new Book(title, author, pages, read.checked);
+    const newBook = new Book(title, author, pages, read);
     library.push(newBook);
 
     window.localStorage.setItem('library', JSON.stringify(library));
