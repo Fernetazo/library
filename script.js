@@ -40,9 +40,12 @@ function showLibrary() {
     
     library = JSON.parse(window.localStorage.getItem('library'));
 
-    for (let i = 0; i < library.length; i++) {
+    if (library) {
 
-        makeVisualCard(library, action = "showLibrary", i);
+        for (let i = 0; i < library.length; i++) {
+
+            makeVisualCard(library, action = "showLibrary", i);
+        }
     }
 }
 
