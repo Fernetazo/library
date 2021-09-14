@@ -1,5 +1,3 @@
-// TO DO: Modal
-
 let library = [];
 
 function Book(title, author, pages, read) {
@@ -27,7 +25,9 @@ function addNewBook() {
     }
     else {
         const newBook = new Book(title, author, pages, read);
-        library.push(newBook);
+        if (library) {
+            library.push(newBook);
+        }
 
         window.localStorage.setItem('library', JSON.stringify(library));
 
