@@ -68,6 +68,7 @@ main {
     justify-content: space-between;
     width: 300px;
     height: 400px;
+    padding-bottom: 5px;
     border: 1px solid black;
     box-shadow: 6px 8px black;
     background: rgb(241,178,75);
@@ -104,6 +105,13 @@ main {
     width: 35px;
     height: 35px;
     align-self: flex-end;
+    background: none;
+    border: none;
+}
+
+.deleteButton:hover {
+    background: rgba(255, 0, 0, 0.356);
+    cursor: pointer;
 }
 
 .switch {
@@ -140,15 +148,15 @@ main {
     height: 26px;
     width: 26px;
     left: 4px;
+    top: 1px;
     border-radius: 50%;
-    bottom: 4px;
     background-color: white;
     -webkit-transition: .4s;
     transition: .4s;
 }
   
 input:checked + .slider {
-    background-color: #2196F3;
+    background-color: rgb(75,179,154);
 }
   
 input:focus + .slider {
