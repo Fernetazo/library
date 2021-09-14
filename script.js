@@ -158,6 +158,7 @@ function makeVisualCard(library, action, i) {
 
     libraryDiv.appendChild(div);
     closePopUp();
+    document.getElementById("newBookForm").reset();
 }
 
 let popUp = document.getElementById("newBookPopup");
