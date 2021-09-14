@@ -22,12 +22,18 @@ function addNewBook() {
     let pages = document.getElementById("pages").value;
     let read = document.getElementById("read").checked;
     
-    const newBook = new Book(title, author, pages, read);
-    library.push(newBook);
+    if (!title || !author || !pages) {
+        return alert("Something is missing!");
+    }
+    else {
+        const newBook = new Book(title, author, pages, read);
+        library.push(newBook);
 
-    window.localStorage.setItem('library', JSON.stringify(library));
+        window.localStorage.setItem('library', JSON.stringify(library));
 
-    makeVisualCard(library, action = "addNewBook");
+        makeVisualCard(library, action = "addNewBook");
+        document.getElementById("newBookForm").reset();
+    }
 }
 
 function showLibrary() {
@@ -156,9 +162,8 @@ function makeVisualCard(library, action, i) {
         }
     }
 
-    libraryDiv.appendChild(div);
     closePopUp();
-    document.getElementById("newBookForm").reset();
+    libraryDiv.appendChild(div);
 }
 
 let popUp = document.getElementById("newBookPopup");
@@ -172,6 +177,9 @@ popUpCloseButton.addEventListener('click', closePopUp);
 
 const newBookButton = document.getElementById("newBookButton");
 newBookButton.addEventListener('click', popupNewBook);
+
+const submitNewBookButton = document.getElementById("submitNewBookButton");
+submitNewBookButton.addEventListener('click', addNewBook);
 
 window.onclick = function(event) {
     if (event.target == popUp) {
