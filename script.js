@@ -1,4 +1,4 @@
-let library = [];
+let library = [asd];
 
 function Book(title, author, pages, read) {
     this.title = title;
@@ -25,9 +25,7 @@ function addNewBook() {
     }
     else {
         const newBook = new Book(title, author, pages, read);
-        if (library) {
-            library.push(newBook);
-        }
+        library.push(newBook);
 
         window.localStorage.setItem('library', JSON.stringify(library));
 
