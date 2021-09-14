@@ -107,7 +107,7 @@ function makeVisualCard(library, action, i) {
         let read = document.createElement("div");
         read.classList.add("readText");
         let readText = Object.values(library[i]);
-        if (readText == "true") {
+        if (readText[3]) {
             read.textContent = "Read it";
         } else {
             read.textContent = "Not read it";
@@ -145,7 +145,6 @@ function makeVisualCard(library, action, i) {
     }
 
     libraryDiv.appendChild(div);
-
 }
 
 showLibrary();

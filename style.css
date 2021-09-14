@@ -13,7 +13,7 @@ body {
 
 main {
     padding-top: 20px;    
-    width: 760px;
+    width: 960px;
     height: 300px;
 }
 
@@ -66,11 +66,38 @@ main {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    width: 150px;
-    height: 200px;
+    width: 300px;
+    height: 400px;
     border: 1px solid black;
+    box-shadow: 6px 8px black;
     background: rgb(241,178,75);
     background: linear-gradient(180deg, rgba(241,178,75,1) 0%, rgba(214,132,56,1) 100%); 
+}
+
+.textCard {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    width: 290px;
+    height: 400px;
+    justify-content: space-between;
+}
+
+.authorText {
+    font-size: 18px;
+    flex-grow: 8;
+}
+
+.titleText {
+    font-size: 42px;
+    font-style: italic;
+    font-weight: bold;
+    flex-grow: 20;
+}
+
+.pagesText, .readText {
+    font-size: 12px;
+    flex-grow: 1;
 }
 
 .deleteButton {
