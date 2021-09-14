@@ -24,9 +24,10 @@ main {
     border-radius: 20px;
     cursor: pointer;
     margin-top: 15px;
-    width: 130px;
-    height: 30px;
+    width: 180px;
+    height: 60px;
     align-self: center;
+    font-size: 20px;
 }
 
 .button:hover {
@@ -221,14 +222,15 @@ header {
 }
 
 #headerTitle {
-    font-size: 42px;
+    font-size: 120px;
 }
 
 h5 {
     display:flex;
-    margin-top: -25px;
-}
-
-img {
-    margin-right: 22px;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    margin-top: 0px;
+    margin-bottom: 0px;
+    font-size: 30px;
 }
