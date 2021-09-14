@@ -20,7 +20,8 @@ main {
 
 #newBookButton {
     background: rgb(241,178,75);;
-    border: 2px solid black;
+    border: 1px solid black;
+    border-radius: 20px;
     cursor: pointer;
 }
 
@@ -109,7 +110,7 @@ main {
 
 .pagesText, .readText {
     font-size: 12px;
-    flex-grow: 1;
+    margin-bottom: 5px;
 }
 
 .deleteButton {
