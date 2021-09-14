@@ -87,41 +87,50 @@ function makeVisualCard(library, action, i) {
     let textCard = document.createElement("div");
     textCard.classList.add("textCard");
 
+    let author = document.createElement("div");
+    author.classList.add("authorText");
+    textCard.appendChild(author);
+
+    let title = document.createElement("div");
+    title.classList.add("titleText");
+    textCard.appendChild(title);
+
+    let pages = document.createElement("div");
+    pages.classList.add("pagesText");
+    textCard.appendChild(pages);
+
+    let read = document.createElement("div");
+    read.classList.add("readText");
+    textCard.appendChild(read);
+
     if (action == "showLibrary") {
+        div.dataset.index = i;
         
-        let author = document.createElement("div");
-        author.classList.add("authorText");
         let authorText = Object.values(library[i]);
         author.textContent = authorText[1];
-        textCard.appendChild(author);
-
-        let title = document.createElement("div");
-        title.classList.add("titleText");
+        
         let titleText = Object.values(library[i]);
         title.textContent = titleText[0];
-        textCard.appendChild(title);
-
-        let pages = document.createElement("div");
-        pages.classList.add("pagesText");
+        
         let pagesText = Object.values(library[i]);
         pages.textContent = pagesText[2] + " pages";
-        textCard.appendChild(pages);
 
-        let read = document.createElement("div");
-        read.classList.add("readText");
         let readText = Object.values(library[i]);
         if (readText[3]) {
             read.textContent = "Read it";
         } else {
             read.textContent = "Not read it";
         }
-        textCard.appendChild(read);
-
-        
-        div.dataset.index = i;
     } else {
-        textCard.textContent = Object.values(library[library.length - 1]);
         div.dataset.index = library.length - 1;
+        author.textContent = library[library.length - 1]["author"];
+        title.textContent = library[library.length - 1]["title"];
+        pages.textContent = library[library.length - 1]["pages"] + " pages";
+        if (library[library.length - 1]["read"]) {
+            read.textContent = "Read it";
+        } else {
+            read.textContent = "Not read it";
+        }
     }
     div.appendChild(textCard);
 
@@ -138,7 +147,7 @@ function makeVisualCard(library, action, i) {
     div.appendChild(readSwitchLabel);
 
     if (action == "addNewBook") {
-        if (read.checked) {
+        if (library[library.length - 1]["read"]) {
             readCheckbox.checked = true;
         }
     } else {
