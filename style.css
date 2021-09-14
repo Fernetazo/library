@@ -18,11 +18,23 @@ main {
     height: 300px;
 }
 
-#newBookButton {
-    background: rgb(241,178,75);;
+.button {
+    background: rgb(241,178,75);
     border: 1px solid black;
     border-radius: 20px;
     cursor: pointer;
+    margin-top: 15px;
+    width: 130px;
+    height: 30px;
+    align-self: center;
+}
+
+.button:hover {
+    border: 1px solid white;
+}
+
+.button:active {
+    background: rgb(165, 121, 51);
 }
 
 #newBookPopup {
@@ -41,29 +53,37 @@ main {
 #newBookForm {
     display: flex;
     flex-direction: column;
-    background-color: #36846b;
+    background: linear-gradient(180deg, rgba(75,179,154,1) 0%, rgba(54,132,107,1) 100%);
     margin: 10% auto; /* 15% from the top and centered */
     padding: 20px;
     border: 1px solid #888;
     width: 20%; 
+    border-radius: 20px;
 }
 
 .label {
-    margin-top: 15px;
+    margin-top: 20px;
+    color: white;
 }
 
 .close {
-    color: #aaa;
-    text-align: end;
-    font-size: 28px;
+    width: 30px;
+    height: 35px;
+    align-self: flex-end;
+    text-align: center;
+    font-size: 34px;
     font-weight: bold;
+    color: black;
 }
 
-.close:hover,
-.close:focus {
-  color: black;
+.close:hover {
+  color: red;
   text-decoration: none;
   cursor: pointer;
+}
+
+.close:active {
+    color: white;
 }
 
 #libraryDiv {
