@@ -106,6 +106,8 @@ main {
     height: 35px;
     align-self: flex-end;
     background: none;
+    border-radius: 0px 0px 0px 30px;
+    background: rgba(255, 0, 0, 0.356);
     border: none;
 }
 

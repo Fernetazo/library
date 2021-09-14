@@ -63,8 +63,10 @@ function toggleRead(e) {
     let index = toToggle.dataset.index;
     if (library[index]["read"]) {
         library[index]["read"] = false;
+        toToggle.childNodes[1].lastChild.textContent = "Not read it";
     } else {
         library[index]["read"] = true;
+        toToggle.childNodes[1].lastChild.textContent = "Read it";
     }
     window.localStorage.setItem('library', JSON.stringify(library));
 }
