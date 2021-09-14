@@ -1,4 +1,4 @@
-let library = [asd];
+let library = ["asd"];
 
 function Book(title, author, pages, read) {
     this.title = title;
