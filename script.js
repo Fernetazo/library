@@ -7,6 +7,9 @@ function Book(title, author, pages, read) {
     this.author = author;
     this.pages = pages;
     this.read = read;
+    this.info = function() {
+        return(`${title} by ${author}. Pages: ${pages}`);
+    }
 }
 
 function popupNewBook() {
@@ -75,20 +78,22 @@ function makeVisualCard(library, action, i) {
     let div = document.createElement("div");
     div.classList.add("bookCard");
 
-    if (action == "showLibrary") {
-        div.textContent = Object.values(library[i]);
-        div.dataset.index = i;
-    } else {
-        div.textContent = Object.values(library[library.length - 1]);
-        div.dataset.index = library.length - 1;
-    }
-    libraryDiv.appendChild(div);
-
     let button = document.createElement("button");
     button.classList.add("deleteButton");
     button.textContent = "❌";
     button.addEventListener('click', deleteBook);
     div.appendChild(button);
+
+    let textCard = document.createElement("div");
+    textCard.classList.add("textCard");
+    if (action == "showLibrary") {
+        textCard.textContent = Object.values(library[i]);
+        div.dataset.index = i;
+    } else {
+        textCard.textContent = Object.values(library[library.length - 1]);
+        div.dataset.index = library.length - 1;
+    }
+    div.appendChild(textCard);
 
     // Read switch
     let readSwitchLabel = document.createElement("label");
@@ -101,7 +106,7 @@ function makeVisualCard(library, action, i) {
     readSlider.classList.add("slider");
     readSwitchLabel.appendChild(readSlider);
     div.appendChild(readSwitchLabel);
-    
+
     if (action == "addNewBook") {
         if (read.checked) {
             readCheckbox.checked = true;
@@ -111,6 +116,9 @@ function makeVisualCard(library, action, i) {
             readCheckbox.checked = true;
         }
     }
+
+    libraryDiv.appendChild(div);
+
 }
 
 showLibrary();

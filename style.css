@@ -59,21 +59,22 @@ main {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
-    gap: 15px;
+    gap: 20px;
 }
 
 .bookCard {
+    display: flex;
+    flex-direction: column;
     width: 150px;
     height: 200px;
     border: 1px solid black;
     background: rgb(241,178,75);
     background: linear-gradient(180deg, rgba(241,178,75,1) 0%, rgba(214,132,56,1) 100%); 
-    
 }
 
 .deleteButton {
-    width: 50px;
-    height: 50px;
+    width: 35px;
+    height: 35px;
 }
 
 .switch {
