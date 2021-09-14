@@ -79,7 +79,7 @@ function makeVisualCard(library, action, i) {
 
     let button = document.createElement("button");
     button.classList.add("deleteButton");
-    button.textContent = "❌";
+    button.textContent = "X";
     button.addEventListener('click', deleteBook);
     div.appendChild(button);
 
@@ -149,6 +149,21 @@ function makeVisualCard(library, action, i) {
     libraryDiv.appendChild(div);
 }
 
-showLibrary();
+let popUp = document.getElementById("newBookPopup");
+function closePopUp() {
+    popUp.style.visibility = "hidden";
+}
+
+const popUpCloseButton = document.getElementById("close");
+popUpCloseButton.addEventListener('click', closePopUp);
+
 const newBookButton = document.getElementById("newBookButton");
 newBookButton.addEventListener('click', popupNewBook);
+
+window.onclick = function(event) {
+    if (event.target == popUp) {
+        popUp.style.visibility = "hidden";
+    }
+}
+
+showLibrary();

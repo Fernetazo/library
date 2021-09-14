@@ -110,17 +110,21 @@ main {
 }
 
 .deleteButton {
-    width: 35px;
-    height: 35px;
+    width: 40px;
+    height: 45px;
     align-self: flex-end;
     background: none;
+    font-size: 18px;
+    font-weight: bold;
     border-radius: 0px 0px 0px 30px;
-    background: rgba(255, 0, 0, 0.356);
+    background: rgb(175, 128, 53);
+    color: black;
     border: none;
 }
 
 .deleteButton:hover {
     background: rgba(255, 0, 0, 0.356);
+    color: white;
     cursor: pointer;
 }
 
@@ -147,7 +151,7 @@ main {
     right: 0;
     bottom: 0;
     border-radius: 34px;
-    background-color: #ccc;
+    background-color: rgb(175, 128, 53);
     -webkit-transition: .4s;
     transition: .4s;
 }
@@ -160,7 +164,7 @@ main {
     left: 4px;
     top: 1px;
     border-radius: 50%;
-    background-color: white;
+    background-color: black;
     -webkit-transition: .4s;
     transition: .4s;
 }
