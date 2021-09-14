@@ -11,6 +11,7 @@ function Book(title, author, pages, read) {
 
 function popupNewBook() {
     const newBookPopup = document.getElementById("newBookPopup");
+    newBookPopup.style.opacity = "1";
     newBookPopup.style.visibility = "visible";
 }
 
@@ -147,10 +148,12 @@ function makeVisualCard(library, action, i) {
     }
 
     libraryDiv.appendChild(div);
+    closePopUp();
 }
 
 let popUp = document.getElementById("newBookPopup");
 function closePopUp() {
+    popUp.style.opacity = "0";
     popUp.style.visibility = "hidden";
 }
 
@@ -162,6 +165,7 @@ newBookButton.addEventListener('click', popupNewBook);
 
 window.onclick = function(event) {
     if (event.target == popUp) {
+        popUp.style.opacity = "0";
         popUp.style.visibility = "hidden";
     }
 }

@@ -31,21 +31,24 @@ main {
     left: 0;
     right: 0;
     bottom: 0;
-    background-color: rgba(0,0,0,0.4); 
-    border:#4bb39a 1px solid;
+    background-color: rgba(0,0,0,0.65); 
+    opacity: 0;
+    transition: all 0.4s;
     visibility: hidden;
-    transition: all 0.5s;
 }
 
 #newBookForm {
     display: flex;
     flex-direction: column;
     background-color: #36846b;
-    margin: 15% auto; /* 15% from the top and centered */
+    margin: 10% auto; /* 15% from the top and centered */
     padding: 20px;
     border: 1px solid #888;
     width: 20%; 
-    gap: 5px;
+}
+
+.label {
+    margin-top: 15px;
 }
 
 .close {
