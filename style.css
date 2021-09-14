@@ -12,9 +12,16 @@ body {
 }
 
 main {
-    padding-top: 20px;    
+    padding-top: 20px;
+    padding-left: 40px;    
     width: 960px;
     height: 300px;
+}
+
+#newBookButton {
+    background: rgb(241,178,75);;
+    border: 2px solid black;
+    cursor: pointer;
 }
 
 #newBookPopup {
@@ -79,6 +86,7 @@ main {
     display: flex;
     flex-direction: column;
     text-align: center;
+    align-self: center;
     width: 290px;
     height: 400px;
     justify-content: space-between;
@@ -171,26 +179,28 @@ input:checked + .slider:before {
     transform: translateX(26px);
 }
 
+header {
+    display: flex;
+    position: fixed;
+    width: 10%;
+    height: 100%;
+    flex-direction: column;
+    justify-content: center;
+    gap: 25px;
+    left: 20px;
+    top: 10px;
+    color: white;
+}
 
-footer {
-    color: whitesmoke;
+#headerTitle {
+    font-size: 42px;
 }
 
 h5 {
     display:flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    margin-top: 0px;
-    margin-bottom: 0px;
+    margin-top: -25px;
 }
 
 img {
-    max-width: 70%;
-    height: auto;
-}
-
-a:link, a:hover, a:visited, a:active {
-    color: white;
-    padding-left: 5px;
+    margin-right: 22px;
 }
