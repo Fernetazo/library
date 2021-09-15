@@ -1,4 +1,6 @@
-let library = ["asd"];
+//  TO DO: Check for empty library bug
+
+let library = [];
 
 function Book(title, author, pages, read) {
     this.title = title;
@@ -44,6 +46,8 @@ function showLibrary() {
 
             makeVisualCard(library, action = "showLibrary", i);
         }
+    } else {
+        library = [];
     }
 }
 
