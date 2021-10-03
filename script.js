@@ -1,21 +1,27 @@
-//  TO DO: Check for empty library bug
+class Book {
+    constructor(title, author, pages, read) {
+        this.title = title;
+        this.author = author;
+        this.pages = pages;
+        this.read = read;
+    }
+};
 
-let library = [];
-
-function Book(title, author, pages, read) {
-    this.title = title;
-    this.author = author;
-    this.pages = pages;
-    this.read = read;
+class Library {
+    constructor() {
+        this.books = []
+    }
 }
 
-function popupNewBook() {
+const library = new Library();
+
+popupNewBook = () => {
     const newBookPopup = document.getElementById("newBookPopup");
     newBookPopup.style.opacity = "1";
     newBookPopup.style.visibility = "visible";
-}
+};
 
-function addNewBook() {
+addNewBook = () => {
 
     let title = document.getElementById("title").value;
     let author = document.getElementById("author").value;
@@ -26,42 +32,42 @@ function addNewBook() {
         return alert("Something is missing!");
     }
     else {
-        const newBook = new Book(title, author, pages, read);
-        library.push(newBook);
+        
+        library.books.push(new Book(title, author, pages, read));
 
-        window.localStorage.setItem('library', JSON.stringify(library));
+        window.localStorage.setItem('library', JSON.stringify(library.books));
 
-        makeVisualCard(library, action = "addNewBook");
+        makeVisualCard(library.books, action = "addNewBook");
         document.getElementById("newBookForm").reset();
     }
 }
 
-function showLibrary() {
+showLibrary = () => {
     
-    library = JSON.parse(window.localStorage.getItem('library'));
+    library.books = JSON.parse(window.localStorage.getItem('library'));
 
-    if (library) {
+    if (library.books) {
 
-        for (let i = 0; i < library.length; i++) {
+        for (let i = 0; i < library.books.length; i++) {
 
-            makeVisualCard(library, action = "showLibrary", i);
+            makeVisualCard(library.books, action = "showLibrary", i);
         }
     } else {
-        library = [];
+        library.books = [];
     }
 }
 
-function deleteBook(e) {
+deleteBook = (e) => {
     let toDelete = e.target.parentElement;
     let div = toDelete.nextSibling;
     toDelete.remove();
     let index = toDelete.dataset.index;
-    library.splice(index, 1);
+    library.books.splice(index, 1);
     
-    window.localStorage.setItem('library', JSON.stringify(library));
+    window.localStorage.setItem('library', JSON.stringify(library.books));
     
     if (div) {
-        for (let i = index; i <= library.length; i++) {
+        for (let i = index; i <= library.books.length; i++) {
             if (div) {
                 div.dataset.index = i;
                 div = div.nextSibling;
@@ -70,20 +76,20 @@ function deleteBook(e) {
     }
 }
 
-function toggleRead(e) {
+toggleRead = (e) => {
     let toToggle = e.target.parentElement.parentElement;
     let index = toToggle.dataset.index;
-    if (library[index]["read"]) {
-        library[index]["read"] = false;
+    if (library.books[index]["read"]) {
+        library.books[index]["read"] = false;
         toToggle.childNodes[1].lastChild.textContent = "Not read it";
     } else {
-        library[index]["read"] = true;
+        library.books[index]["read"] = true;
         toToggle.childNodes[1].lastChild.textContent = "Read it";
     }
-    window.localStorage.setItem('library', JSON.stringify(library));
+    window.localStorage.setItem('library', JSON.stringify(library.books));
 }
 
-function makeVisualCard(library, action, i) {
+makeVisualCard = (library, action, i) => {
     let libraryDiv = document.getElementById("libraryDiv");
     
     let div = document.createElement("div");
@@ -172,7 +178,7 @@ function makeVisualCard(library, action, i) {
 }
 
 let popUp = document.getElementById("newBookPopup");
-function closePopUp() {
+closePopUp = () => {
     popUp.style.opacity = "0";
     popUp.style.visibility = "hidden";
 }
